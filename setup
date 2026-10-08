@@ -3,6 +3,7 @@
 cwd=$(pwd)
 home_dir=home
 udev_rules_dir=etc/udev/rules.d
+nm_pre_up_dir=etc/NetworkManager/dispatcher.d/pre-up.d
 
 for file in $cwd/$home_dir/*; do
     if [[ `basename $file` == 'config' ]]; then
@@ -16,4 +17,8 @@ done
 
 for file in $cwd/$udev_rules_dir/*; do
     sudo ln -snfv $file /$udev_rules_dir
+done
+
+for file in $cwd/$nm_pre_up_dir/*; do
+    sudo ln -snfv $file /$nm_pre_up_dir
 done

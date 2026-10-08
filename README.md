@@ -1,12 +1,11 @@
 # dot-files
-Linux dot-files across all my machines
+Linux dot-files across all machines
 
 Emulator: Ghostty
 Font: JetBrains Mono
 
 ## install-list
 #### apt
-- docker
 - flatpak
     - flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 - gnome-tweaks
@@ -19,13 +18,17 @@ Font: JetBrains Mono
 - d2
 - fish
     - bass
-- pnpm
-    - node
-- gem
-    - bundler
-    - jekyll
 - obs
 
+
+dev
+    rust
+    go
+    - pnpm
+        - node
+    - gem
+        - bundler
+        - jekyll
 #### probationary
 - mpv
 - openrgb
@@ -41,19 +44,30 @@ default
         alacritty
         console
 arch
+    [?] spotify
+    claude-desktop
     discord
+    difftastic
+    docker
+    docker-compose
+    docker-buildx
     ghostty
     google-chrome
     helix
+    mpv
+    obs-studio
     sbctl
     syncthing
     texlive
+    ticktick
     ttf-jetbrains-mono
+    typst
     xclip
     zellij
-    visual-studio-code-bin
+    [?] visual-studio-code-bin
     kew
     gnome-browser-connector
+    [?] zed
 
 gnome-extensions
     AppIndicator

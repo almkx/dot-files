@@ -11,6 +11,8 @@
     autoSetupRemote = true
 [core]
     editor = helix
+[diff]
+    external = difft
 [color]
     ui = auto
 [url "git@github.com:"]

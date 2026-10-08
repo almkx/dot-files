@@ -1,1 +1,3 @@
 theme = "catppuccin_mocha"
+editor.color-modes = true
+editor.bufferline = "multiple"
