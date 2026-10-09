@@ -374,7 +374,7 @@ theme "catppuccin-mocha"
 //   - full
 //   - titles (default)
 // 
-// pane_frame_style "titles"
+pane_frame_style "full"
  
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
@@ -556,7 +556,7 @@ support_kitty_keyboard_protocol false
 // Whether stacked panes display as a list with the expanded pane pinned to the bottom
 // Default: true
 // 
-// stacked_pane_list false
+stacked_pane_list true
  
 // Whether to show tips on startup
 // Default: true
