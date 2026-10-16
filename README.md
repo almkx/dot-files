@@ -13,7 +13,6 @@ Font: JetBrains Mono
 - docker-buildx
 - docker-compose
 - fish
-    - [?] bass
 - foliate
 - ghostty
 - git
