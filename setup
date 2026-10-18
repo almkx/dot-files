@@ -4,6 +4,7 @@ cwd=$(pwd)
 home_dir=home
 nm_pre_up_dir=etc/NetworkManager/dispatcher.d/pre-up.d
 kbd_keymaps_dir=usr/share/kbd/keymaps/i386
+xkb_keymaps_dir=etc/xkb
 charge_start=75
 charge_stop=80
 battery_dir=/sys/class/power_supply/BAT0
@@ -18,6 +19,12 @@ symlink_kbd_keymaps() {
     for file in $cwd/$kbd_keymaps_dir/*; do
         sudo ln -snfv $file /$kbd_keymaps_dir
     done
+}
+
+install_xkb_keymaps() {
+    sudo cp -rT $cwd/$xkb_keymaps_dir /$xkb_keymaps_dir
+    sudo localectl set-x11-keymap --no-convert ${1:-us,gallium} pc105
+    localectl
 }
 
 show() {
@@ -43,7 +50,7 @@ set_charge_limits() {
     show after
 }
 
-symlink_configs() {
+symlink_user_configs() {
     for file in $cwd/$home_dir/*; do
         if [[ `basename $file` == 'config' ]]; then
             for file in $cwd/$home_dir/config/*; do
@@ -63,11 +70,17 @@ for arg in "${@:-}"; do
         --kbd)
             symlink_kbd_keymaps
             ;;
+        --xkb)
+            install_xkb_keymaps
+            ;;
+        --xkb=*)
+            install_xkb_keymaps ${arg#--xkb=}
+            ;;
         --battery)
             set_charge_limits
             ;;
         *)
-            symlink_configs
+            symlink_user_configs
             ;;
     esac
 done
