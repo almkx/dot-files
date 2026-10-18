@@ -15,7 +15,7 @@ disable_nm_eee() {
 }
 
 symlink_kbd_keymaps() {
-    for file in $cwd/$kbd_keymaps_dir/*.map; do
+    for file in $cwd/$kbd_keymaps_dir/*; do
         sudo ln -snfv $file /$kbd_keymaps_dir
     done
 }
