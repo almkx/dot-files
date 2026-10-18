@@ -3,6 +3,7 @@
 cwd=$(pwd)
 home_dir=home
 nm_pre_up_dir=etc/NetworkManager/dispatcher.d/pre-up.d
+kbd_keymaps_dir=usr/share/kbd/keymaps/i386
 charge_start=75
 charge_stop=80
 battery_dir=/sys/class/power_supply/BAT0
@@ -10,6 +11,12 @@ battery_dir=/sys/class/power_supply/BAT0
 disable_nm_eee() {
     for file in $cwd/$nm_pre_up_dir/*; do
         sudo ln -snfv $file /$nm_pre_up_dir
+    done
+}
+
+symlink_kbd_keymaps() {
+    for file in $cwd/$kbd_keymaps_dir/*.map; do
+        sudo ln -snfv $file /$kbd_keymaps_dir
     done
 }
 
@@ -52,6 +59,9 @@ for arg in "${@:-}"; do
     case $arg in
         --nm)
             disable_nm_eee
+            ;;
+        --kbd)
+            symlink_kbd_keymaps
             ;;
         --battery)
             set_charge_limits
