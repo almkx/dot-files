@@ -36,14 +36,6 @@ set -gx PATH $PATH "$GO_HOME" "$GOPATH/bin"
 set -gx RUST_HOME "$HOME/.cargo/bin"
 set -gx PATH $PATH "$RUST_HOME"
 
-# ruby-gems
-set -gx GEM_HOME "$HOME/.gems/bin"
-set -gx PATH $PATH "$GEM_HOME"
-
-# pnpm
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-set -gx PATH $PATH "$PNPM_HOME"
-
 function mlib
     switch $argv[1]
         case -a --append

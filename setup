@@ -3,19 +3,61 @@
 cwd=$(pwd)
 home_dir=home
 nm_pre_up_dir=etc/NetworkManager/dispatcher.d/pre-up.d
+charge_start=75
+charge_stop=80
+battery_dir=/sys/class/power_supply/BAT0
 
-for file in $cwd/$home_dir/*; do
-    if [[ `basename $file` == 'config' ]]; then
-        for file in $cwd/$home_dir/config/*; do
-            ln -snfv $file ~/.config/`basename $file`
-        done
-    else
-        ln -snfv $file ~/.`basename $file`
-    fi
-done
-
-if [[ $1 == '--nm' ]]; then
+disable_nm_eee() {
     for file in $cwd/$nm_pre_up_dir/*; do
         sudo ln -snfv $file /$nm_pre_up_dir
     done
-fi
+}
+
+show() {
+  echo "$1:"
+  echo "  start $(cat $battery_dir/charge_control_start_threshold)%"
+  echo "  stop  $(cat $battery_dir/charge_control_end_threshold)%"
+  echo "  upower:"
+  upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -i threshold
+}
+
+set_start() { echo "$1" | sudo tee $battery_dir/charge_control_start_threshold >/dev/null; }
+
+set_stop()  { echo "$1" | sudo tee $battery_dir/charge_control_end_threshold   >/dev/null; }
+
+set_charge_limits() {
+    show before
+    if (( $charge_start < $(cat $battery_dir/charge_control_end_threshold) )); then
+      set_start "$charge_start"; set_stop "$charge_stop"
+    else
+      set_stop "$charge_stop"; set_start "$charge_start"
+    fi
+    sudo systemctl restart upower
+    show after
+}
+
+symlink_configs() {
+    for file in $cwd/$home_dir/*; do
+        if [[ `basename $file` == 'config' ]]; then
+            for file in $cwd/$home_dir/config/*; do
+                ln -snfv $file ~/.config/`basename $file`
+            done
+        else
+            ln -snfv $file ~/.`basename $file`
+        fi
+    done
+}
+
+for arg in "${@:-}"; do
+    case $arg in
+        --nm)
+            disable_nm_eee
+            ;;
+        --battery)
+            set_charge_limits
+            ;;
+        *)
+            symlink_configs
+            ;;
+    esac
+done

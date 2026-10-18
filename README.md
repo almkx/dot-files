@@ -5,25 +5,30 @@ Emulator: Ghostty
 Font: JetBrains Mono
 
 ## cachyos
+#### install
 - btop
 - claude-desktop
 - difftastic
 - discord
 - docker
-- docker-buildx
-- docker-compose
+    - docker-buildx
+    - docker-compose
 - fish
 - foliate
 - ghostty
+    - ghostty-nautilus
 - git
 - gnome-browser-connector
 - gnome-extensions-app
 - gnome-tweaks
+- go
 - google-chrome
 - helix
 - kew
 - mpv
 - obs-studio
+- python3
+- rust
 - sbctl
 - simple-scan
 - syncthing
@@ -33,26 +38,20 @@ Font: JetBrains Mono
 - xclip
 - zed
 - zellij
-- [?] visual-studio-code-bin
+
+
+### gnome-extensions
+- gTile
 
 #### probationary
 - d2
 - picard
 - zoom
-
-#### dev
-- go
-- rust
-- pnpm
-    - node
-
-### gnome-extensions
-- AppIndicator
-- gTile
-
+- visual-studio-code-bin
 
 ## steps
 - Add keyboard shortcuts
+    - `Super+B` Browser
     - `Super+F` Files
     - `Super+T` Ghostty
 - Make CAPSLOCK an additional ESC with `gnome-tweaks`
