@@ -42,6 +42,8 @@ Font: JetBrains Mono
 
 ### gnome-extensions
 - gTile
+- AppIndicator
+- Hot Edge
 
 #### probationary
 - d2
