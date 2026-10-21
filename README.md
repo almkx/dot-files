@@ -55,7 +55,8 @@ Font: JetBrains Mono
 - Add keyboard shortcuts
     - `Super+B` Browser
     - `Super+F` Files
-    - `Super+T` Ghostty
+    - `Super+T` Terminal
 - Make CAPSLOCK an additional ESC with `gnome-tweaks`
+- Remove `cachy-update` via `cachyos-hello`
 - Add TorGuard VPN using WireGuard config
 - Set up SMB connections to NAS

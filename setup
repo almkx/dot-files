@@ -11,7 +11,7 @@ battery_dir=/sys/class/power_supply/BAT0
 
 disable_nm_eee() {
     for file in $cwd/$nm_pre_up_dir/*; do
-        sudo ln -snfv $file /$nm_pre_up_dir
+        sudo cp -v $file /$nm_pre_up_dir
     done
 }
 
