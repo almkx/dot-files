@@ -10,7 +10,7 @@
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
-    "anthropic_retention": false
+    "anthropic_retention": false,
   },
   "base_keymap": "Zed",
   "helix_mode": true,
@@ -27,7 +27,7 @@
   "buffer_font_family": "JetBrains Mono",
   "buffer_font_size": 12.0,
   "buffer_line_height": {
-    "custom": 1.2
+    "custom": 1.2,
   },
   "indent_guides": {
     "enabled": false,
@@ -37,5 +37,9 @@
   },
   "session": {
     "trust_all_worktrees": true,
+  },
+  "auto_install_extensions": {
+    "catppuccin": true,
+    "typst": true,
   },
 }
