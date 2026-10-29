@@ -27,6 +27,7 @@ Font: JetBrains Mono
 - kew
 - mpv
 - obs-studio
+- obsidian
 - python3
 - rust
 - sbctl
