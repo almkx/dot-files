@@ -27,7 +27,6 @@ Font: JetBrains Mono
 - kew
 - mpv
 - obs-studio
-- obsidian
 - python3
 - rust
 - sbctl
@@ -40,6 +39,8 @@ Font: JetBrains Mono
 - zed
 - zellij
 
+### special
+- logseq
 
 ### gnome-extensions
 - gTile
@@ -61,3 +62,4 @@ Font: JetBrains Mono
 - Remove `cachy-update` via `cachyos-hello`
 - Add TorGuard VPN using WireGuard config
 - Set up SMB connections to NAS
+- Symlink `Logseq.desktop` and set up app 
