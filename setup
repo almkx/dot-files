@@ -5,6 +5,7 @@ home_dir=home
 nm_pre_up_dir=etc/NetworkManager/dispatcher.d/pre-up.d
 kbd_keymaps_dir=usr/share/kbd/keymaps/i386
 xkb_keymaps_dir=etc/xkb
+udev_rules_dir=etc/udev/rules.d
 charge_start=75
 charge_stop=80
 battery_dir=/sys/class/power_supply/BAT0
@@ -25,6 +26,12 @@ install_xkb_keymaps() {
     sudo cp -rT $cwd/$xkb_keymaps_dir /$xkb_keymaps_dir
     sudo localectl set-x11-keymap --no-convert ${1:-us,gallium} pc105
     localectl
+}
+
+install_udev_rules() {
+    for file in $cwd/$udev_rules_dir/*; do
+        sudo cp -v $file /$udev_rules_dir
+    done
 }
 
 show() {
@@ -75,6 +82,9 @@ for arg in "${@:-}"; do
             ;;
         --xkb=*)
             install_xkb_keymaps ${arg#--xkb=}
+            ;;
+        --udev)
+            install_udev_rules
             ;;
         --battery)
             set_charge_limits
