@@ -63,3 +63,5 @@ Font: JetBrains Mono
 - Add TorGuard VPN using WireGuard config
 - Set up SMB connections to NAS
 - Symlink `Logseq.desktop` and set up app 
+- Copy `~/.config/monitors.xml` to `/var/lib/gdm/seat0/config/`
+    - Set permissions with `sudo chown 60580:65534 monitors.xml`
