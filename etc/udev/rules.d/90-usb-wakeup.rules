@@ -1,1 +1,2 @@
-ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", KERNEL=="usb*", ATTR{power/wakeup}="enabled"
+# Let USB hubs (DeviceClass=09) wake system on device connect/disconnect events 
+ACTION=="add|bind", SUBSYSTEM=="usb", ATTR{bDeviceClass}=="09", ATTR{power/wakeup}="enabled"
